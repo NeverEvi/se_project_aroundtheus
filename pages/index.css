@@ -1,15 +1,17 @@
 @import url("../vendor/normalize.css");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap');
+@import url("../fonts/Inter\ Web/inter.css");
 
 @import url("../blocks/page.css");
 
 @import url("../blocks/header.css");
+
 @import url("../blocks/profile.css");
 @import url("../blocks/info.css");
+
 @import url("../blocks/content.css");
 @import url("../blocks/card.css");
-@import url("../blocks/content.css");
 
+@import url("../blocks/footer.css");
 
 
 @media screen and (max-width: 900px){
@@ -28,7 +30,6 @@
     margin-bottom: 36px;
   }
 }
-
 
 @media screen and (max-width: 480px) {
   
@@ -53,6 +54,7 @@
     justify-content: flex-end;
     padding-bottom: 36px;
     margin-right: 0;
+    min-width: 282px;
   }
   .info__name {
     font-size: 22px;
@@ -78,5 +80,4 @@
   .content {
     margin-bottom: 48px;
   }
-
 }

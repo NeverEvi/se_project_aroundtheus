@@ -33,4 +33,5 @@
 }
 .info__edit:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
