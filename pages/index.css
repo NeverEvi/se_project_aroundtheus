@@ -1,83 +1,9 @@
 @import url("../vendor/normalize.css");
-@import url("../fonts/Inter\ Web/inter.css");
+@import url("../fonts/InterWeb/inter.css");
 
 @import url("../blocks/page.css");
 
 @import url("../blocks/header.css");
-
 @import url("../blocks/profile.css");
-@import url("../blocks/info.css");
-
 @import url("../blocks/content.css");
-@import url("../blocks/card.css");
-
 @import url("../blocks/footer.css");
-
-
-@media screen and (max-width: 900px){
-  .header__logo {
-    padding-left: 27px;
-    padding-top: 28px;
-  }
-  .profile {
-    max-width: calc(100% - 38px);
-  }
-  .profile__info {
-    margin-right: 10px;
-  }
-  .footer__copyright {
-    padding-left: 19px;
-    margin-bottom: 36px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  
-  .header__border {
-    max-width: 99vh;
-    margin-top: 32px;
-  }
-  .profile {
-    flex-direction: column;
-    padding-bottom: 36px;
-    padding-top: 42px;
-    max-width: 282px;
-  }
-  .profile__avatar {
-    margin-right: 0;
-    margin-bottom: 30px;
-  }
-  .profile__info {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: flex-end;
-    padding-bottom: 36px;
-    margin-right: 0;
-    min-width: 282px;
-  }
-  .profile__name {
-    font-size: 22px;
-    line-height: 27px;
-    text-align: center;
-  }
-  .profile__title {
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .profile__edit {
-    margin: 0;
-    margin-left: 10px;
-    margin-right: 15px;
-  }
-  .profile__add {
-    min-width: 282px;
-    margin: 0;
-  }
-  .content {
-    margin-bottom: 48px;
-  }
-}

@@ -1,18 +1,29 @@
 .header {
-  display:flex;
-  flex-direction: column;
-  
+	display: flex;
+	flex-direction: column;
+	opacity: 0.7;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgba(84, 84, 84, 0.7);
+	padding-bottom: 41px;
 }
 .header__logo {
-  padding-top: 45px;
-  width: 173px;
-  height: 33px;
+	padding-top: 45px;
+	width: 173px;
+	height: 33px;
 }
-.header__border {
-  content:"";
-  max-width: 880px;
-  height: 0px;
-  opacity: 0.7;
-  border: 1px solid #545454;
-  margin-top: 41px;
+
+@media screen and (max-width: 900px) {
+	.header__logo {
+		padding-left: 27px;
+		padding-top: 28px;
+		width: 126px;
+		height: 24px;
+	}
+}
+@media screen and (max-width: 480px) {
+	.header {
+		max-width: 99vh;
+		padding-bottom: 32px;
+	}
 }
