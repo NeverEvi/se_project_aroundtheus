@@ -24,7 +24,8 @@
 .info__edit {
   grid-area: edit;
   background: transparent url(../images/edit-button.svg) center no-repeat;
-  height: 24px; width: 24px;
+  height: 24px;
+  width: 24px;
   border: 1px solid #fff;
   margin-left: auto;
   align-self: center;
