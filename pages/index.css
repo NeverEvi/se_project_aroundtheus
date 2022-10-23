@@ -56,19 +56,19 @@
     margin-right: 0;
     min-width: 282px;
   }
-  .info__name {
+  .profile__name {
     font-size: 22px;
     line-height: 27px;
     text-align: center;
   }
-  .info__title {
+  .profile__title {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
   }
-  .info__edit {
+  .profile__edit {
     margin: 0;
     margin-left: 10px;
     margin-right: 15px;

@@ -19,6 +19,45 @@
   "title title";
   grid-template-columns: minmax(auto, 415px) auto;
 }
+.profile__name {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  grid-area: name;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.profile__title {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  margin-top: 16px;
+  grid-area: title;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.profile__edit {
+  grid-area: edit;
+  background: transparent url(../images/edit-button.svg) center no-repeat;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #fff;
+  margin-left: auto;
+  align-self: center;
+  position: relative;
+  top: 3px;
+}
+.profile__edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 .profile__add {
   background: transparent url(../images/add-button.svg) center no-repeat;
   height: 50px;
