@@ -50,6 +50,7 @@
 	border: 1px solid #fff;
 	margin-left: auto;
 	align-self: center;
+	transition: opacity 0.3s linear 0s;
 }
 .profile__edit:hover {
 	opacity: 0.6;
@@ -63,6 +64,7 @@
 	border: 2px solid #ffffff;
 	border-radius: 2px;
 	margin-left: auto;
+	transition: opacity 0.3s linear 0s;
 }
 .profile__add:hover {
 	opacity: 0.6;

@@ -34,8 +34,14 @@
     left: 430px;
     top: -40px;
     border: none;
+    transition: opacity 0.3s linear 0s;
     
 }
+.modal__closeButton:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 
 .modal__header {
     font-weight: 900;
@@ -76,6 +82,12 @@
     margin-right: 36px;
     height: 50px;
     border: 2px;
+    transition: opacity 0.3s linear 0s;
+}
+
+.modal__submission:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 530px) {

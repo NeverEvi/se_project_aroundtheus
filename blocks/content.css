@@ -47,6 +47,7 @@
 	width: 21px;
 	border: none;
 	margin-left: auto;
+	transition: opacity 0.2s linear 0s;
 }
 .content__heart-button:hover {
 	opacity: 0.5;
