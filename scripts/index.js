@@ -24,3 +24,14 @@ let initialCards = [
         link: "../images/lago-di-braies.png"
     },
 ]
+let modal = document.querySelector('.modal');
+let heart = document.querySelectorAll('.content__heart-button');
+let editButton = document.querySelector('.profile__edit')
+let closeButton = document.querySelector('.modal__closeButton')
+
+function editProfile() {
+    modal.classList.toggle('modal_opened')
+}
+
+editButton.addEventListener('click', editProfile)
+closeButton.addEventListener('click', editProfile)

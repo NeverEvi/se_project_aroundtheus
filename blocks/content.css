@@ -53,6 +53,10 @@
 	opacity: 0.5;
 	cursor: pointer;
 }
+.heart-on {
+	background-color: #000;
+}
+
 @media screen and (max-width: 480px) {
 	.content {
 		margin-bottom: 48px;
