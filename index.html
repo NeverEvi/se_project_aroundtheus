@@ -33,72 +33,19 @@
 				</section>
 				<section class="content page__section">
 					<ul class="content__card-list">
-						<li class="content__card">
-							<img
-								class="content__image"
-								src="./images/yosemite-valley.jpg"
-								alt="A river in Yosemite Valley"
-							>
-							<div class="content__desc">
-								<h2 class="content__name">Yosemite Valley</h2>
-								<button type="button" class="content__heart-button"></button>
-							</div>
-						</li>
-						<li class="content__card">
-							<img
-								class="content__image"
-								src="./images/lake-louise.png"
-								alt="A view of the mountains and Lake Louise"
-							>
-							<div class="content__desc">
-								<h2 class="content__name">Lake Louise</h2>
-								<button type="button" class="content__heart-button"></button>
-							</div>
-						</li>
-						<li class="content__card">
-							<img
-								class="content__image"
-								src="./images/bald-mountains.png"
-								alt="A sunset in the Bald Mountains"
-							>
-							<div class="content__desc">
-								<h2 class="content__name">Bald Mountains</h2>
-								<button type="button" class="content__heart-button"></button>
-							</div>
-						</li>
-						<li class="content__card">
-							<img
-								class="content__image"
-								src="./images/latemar.png"
-								alt="The night sky in Latemar"
-							>
-							<div class="content__desc">
-								<h2 class="content__name">Latemar</h2>
-								<button type="button" class="content__heart-button"></button>
-							</div>
-						</li>
-						<li class="content__card">
-							<img
-								class="content__image"
-								src="./images/vanoise-national-park.png"
-								alt="A mountain reflected in the water at Vanoise National Park"
-							>
-							<div class="content__desc">
-								<h2 class="content__name">Vanoise National Park</h2>
-								<button type="button" class="content__heart-button"></button>
-							</div>
-						</li>
-						<li class="content__card">
-							<img
-								class="content__image"
-								src="./images/lago-di-braies.png"
-								alt="Boats docked in Lago di Braies"
-							>
-							<div class="content__desc">
-								<h2 class="content__name">Lago De Braies</h2>
-								<button  type="button" class="content__heart-button"></button>
-							</div>
-						</li>
+						<template id="card-template">
+							<li class="content__card">
+								<img
+									class="content__image"
+									src=""
+									alt=""
+								>
+								<div class="content__desc">
+									<h2 class="content__name"></h2>
+									<button type="button" class="content__heart-button"></button>
+								</div>
+						</template>
+						
 					</ul>
 				</section>
 			</main>
@@ -110,8 +57,8 @@
 					<button type="button" class="modal__closeButton"></button>
 					<h2 class="modal__header">Edit Profile</h2>
 					<form class="modal__form">
-						<input class="modal__input" type="text" name="name" placeholder="Jacques Cousteau">
-						<input class="modal__input" type="text" name="title" placeholder="Explorer">
+						<input class="modal__input input-name" type="text" name="name" placeholder="Jacques Cousteau">
+						<input class="modal__input input-title" type="text" name="title" placeholder="Explorer">
 						<button class="modal__submission" type="submit" name="save">Save</button>
 					</form>
 				</div>
