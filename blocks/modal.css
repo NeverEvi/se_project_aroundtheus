@@ -15,8 +15,7 @@
 }
 
 .modal__container {
-    width: 430px;
-    
+    max-width: 430px;
     background-color: #fff;
     position: absolute;
     left: 50%;
