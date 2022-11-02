@@ -49,13 +49,11 @@ function createCard(data) {
   cardImageElement.alt = data.altText;
   return cardElement;
 }
-
 const cardsContainer = document.querySelector('.content__card-list');
 for (let i = 0; i <= initialCards.length - 1; i++) {
   const card = createCard(initialCards[i]); 
   cardsContainer.prepend(card); 
 }
-
 function openEditProfile() {
   profileNameNew.value = profileName.textContent;
   profileTitleNew.value = profileTitle.textContent;
