@@ -43,7 +43,7 @@ function createCard(data) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.content__card').cloneNode(true);
   const cardNameElement = cardElement.querySelector('.content__name');
-  const cardImageElement = cardElement.querySelector('.content__image');
+  let cardImageElement = cardElement.querySelector('.content__image');
   cardNameElement.textContent = data.name;
   cardImageElement.src = data.link;
   cardImageElement.alt = data.altText;
