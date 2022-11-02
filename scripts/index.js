@@ -6,7 +6,7 @@ const initialCards = [
   },
   {
     name: "Lake Louise",
-    link: "../images/lake-louise.png",
+    link: "/images/lake-louise.png",
     altText: "A view of the mountains and Lake Louise"
   },
   {
