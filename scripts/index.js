@@ -1,7 +1,7 @@
 const initialCards = [
   {
     name: "Yosemite Valley",
-    link: "../images/yosemite-valley.jpg",
+    link: "yosemite-valley.jpg",
     altText: "A river in Yosemite Valley"
   },
   {
