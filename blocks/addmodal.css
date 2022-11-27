@@ -1,0 +1,130 @@
+.addModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  color: black;
+  display: none;    
+}
+.addModal_opened {
+	display: flex;
+}
+.addModal__container {
+  max-width: 430px;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.addModal__closeButton {
+  background: transparent url(../images/CloseIcon.svg) center no-repeat;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  left: 430px;
+  top: -40px;
+  border: none;
+  transition: opacity 0.3s linear 0s;
+}
+.addModal__closeButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.addModal__header {
+  font-weight: 900;
+  font-size: 24px;
+  height: 23px;
+  line-height: 29px;
+  padding-top: 34px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-bottom: 54px;
+  margin: 0;
+}
+.addModal__form {
+  margin-bottom: 36.51px;
+}
+.addModal__input {
+  width: 358px;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0;
+  padding-bottom: 13px;
+  border: none;
+  color: black;
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.addModal__input:last-of-type {
+  margin-bottom: 48px;
+}
+.addModal__submission {
+  color: #fff;
+  background-color: black;
+  width: 358px;
+  margin-left: 36px;
+  margin-right: 36px;
+  height: 50px;
+  border: 2px;
+  transition: opacity 0.3s linear 0s;
+}
+.addModal__submission:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 530px) {
+  .addModal__container {
+    width: 282px;
+  }
+  .addModal__closeButton {
+    transform: scale(0.65);
+    left: 245px;
+    top: -53px;
+  }
+  .addModal__header {
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+    height: 22px;
+    padding-top: 25px;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: 75px;
+    margin: 0;
+  }
+  .addModal__form {
+    margin-bottom: 25px;
+  }
+  .addModal__input {
+    width: 238px;
+    margin-left: 22px;
+    margin-right: 22px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0;
+    padding-bottom: 13px;
+  }
+  .addModal__input:last-of-type {
+    margin-bottom: 46px;
+  }
+  .addModal__submission {
+    width: 238px;
+    margin-left: 22px;
+    margin-right: 22px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
