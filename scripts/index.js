@@ -1,5 +1,5 @@
 const initialCards = [{
-    name: "Portland (Portland, Oregon, USA)",
+    name: "Portland (Portland, Maine, USA)",
     link: "./images/portland.png",
   },{
     name: "Floating City (Floating City, Republic of Maldives)",
