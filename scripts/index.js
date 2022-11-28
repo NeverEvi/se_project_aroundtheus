@@ -1,29 +1,22 @@
-const initialCards = [
-  {
+const initialCards = [{
     name: "Portland (Portland, Oregon, USA)",
     link: "./images/portland.png",
-  },
-  {
+  },{
     name: "Floating City (Floating City, Republic of Maldives)",
     link: "./images/floating city.png",
-  },
-  {
+  },{
     name: "Rainbow Mountain (Vinicunca, Peru)",
     link: "./images/vinicunca.png",
-  },
-  {
+  },{
     name: "New York City (New York City, New York, USA)",
     link: "./images/newyork.png",
-  },
-  {
+  },{
     name: "Aokigahara (青木ヶ原、山梨県、日本)",
     link: "./images/aokigahara.png",
-  },
-  {
+  },{
     name: "Berlin (Berlin, Germany)",
     link: "./images/berlin.png",
-  },
-];
+  },];
 const modal = document.querySelector('.modal_type_edit');
 
 const editButton = document.querySelector('.profile__edit');
@@ -70,25 +63,21 @@ function renderCard(cardData) {
   cardImage.addEventListener('click', () => {
     const previewImage = document.querySelector('.modal__preview-image');
     previewImage.src= cardData.link;
-    previewModal.style = "overflow: visible;"
+    previewModal.style = "overflow: visible;";
     const previewText = document.querySelector('.modal__preview-text');
     previewText.textContent = cardData.name;
-    const closeButton = document.querySelector('.close-preview')
-    
-
+    const closeButton = document.querySelector('.close-preview');
     openModal(previewModal);
   }); 
   cardsContainer.prepend(cardElement);
 }
-
 function openModal(elem) {
   elem.classList.add('modal_opened');
-  elem.style = "animation: fadeIn 1s;"
+  elem.style = "animation: fadeIn 0.7s;"
 };
 function closeModal(elem) {
-  elem.style = "animation: fadeOut 1s;"
-  setTimeout(() => {  elem.classList.remove('modal_opened'); }, 900);
-  
+  elem.style = "animation: fadeOut 0.7s;"
+  setTimeout(() => {  elem.classList.remove('modal_opened'); }, 600);
 };
 function submitEdits(evt) {
   evt.preventDefault();
@@ -107,20 +96,15 @@ editButton.addEventListener('click', () => {
   openModal(modal);
 }); 
 addButton.addEventListener('click', () => {openModal(addModal);}); 
-
 closeButton.addEventListener('click', () => {closeModal(modal);});
 addCloseButton.addEventListener('click', () => {closeModal(addModal);});
 previewCloseButton.addEventListener('click', () => {closeModal(previewModal);});
-
 profileForm.addEventListener('submit', submitEdits);
 addForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = e.target.title.value;
   const link = e.target.link.value;
-  renderCard({
-    name: title,
-    link: link
-  });
+  renderCard({name: title,link: link});
   closeModal(addModal);
 });
 
