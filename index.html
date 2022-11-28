@@ -34,7 +34,8 @@
 				<section class="content page__section">
 					<ul class="content__card-list">
 						<template id="card-template">
-							<li class="content__card">
+							<li class="content__card" id="card">
+								<button type="button" class="content__delete-button"></button>
 								<img
 									class="content__image"
 									src=""
@@ -52,7 +53,7 @@
 			<footer class="footer page__section" id="footer">
 				<p class="footer__copyright">© 2022 Around the U.S.</p>
 			</footer>
-			<div class="modal">
+			<div class="modal modal_type_edit">
 				<div class="modal__container">
 					<button type="button" class="modal__closeButton"></button>
 					<h2 class="modal__header">Edit Profile</h2>
@@ -63,15 +64,22 @@
 					</form>
 				</div>
 			</div>
-			<div class="addModal">
-				<div class="addModal__container">
-					<button type="button" class="addModal__closeButton"></button>
-					<h2 class="addModal__header">New Place</h2>
-					<form class="addModal__form">
-						<input class="addModal__input input-addTitle" type="text" name="title" placeholder="Title">
-						<input class="addModal__input input-addLink" type="text" name="link" placeholder="Image link">
-						<button class="addModal__submission" type="submit" name="create">Create</button>
+			<div class="modal modal_type_add">
+				<div class="modal__container">
+					<button type="button" class="modal__closeButton close-edit"></button>
+					<h2 class="modal__header">New Place</h2>
+					<form class="modal__form add-form">
+						<input class="modal__input input-addTitle" type="text" name="title" placeholder="Title">
+						<input class="modal__input input-addLink" type="text" name="link" placeholder="Image link">
+						<button class="modal__submission" type="submit" name="create">Create</button>
 					</form>
+				</div>
+			</div>
+			<div class="modal modal_type_preview">
+				<div class="modal__preview-container">
+					<button type="button" class="modal__closeButton close-preview" id="closePreviewButton"></button>
+					<img class="modal__preview-image"></img>
+					<p class="modal__preview-text"></p>
 				</div>
 			</div>
 		</div>
