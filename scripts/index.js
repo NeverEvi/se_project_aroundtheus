@@ -66,7 +66,6 @@ function renderCard(cardData) {
     previewModal.style = "overflow: visible;";
     const previewText = document.querySelector('.modal__preview-text');
     previewText.textContent = cardData.name;
-    const closeButton = document.querySelector('.close-preview');
     openModal(previewModal);
   }); 
   cardsContainer.prepend(cardElement);
