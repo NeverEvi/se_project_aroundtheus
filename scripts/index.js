@@ -75,9 +75,7 @@ function openModal(elem) {
   elem.classList.add('modal_opened');
 };
 function closeModal(elem) {
-  setTimeout(() => {
-    elem.classList.remove('modal_opened'); 
-  }, 600);
+  elem.classList.remove('modal_opened'); 
 };
 function submitEdits(evt) {
   evt.preventDefault();
