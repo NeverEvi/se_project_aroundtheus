@@ -17,10 +17,9 @@ const initialCards = [{
     name: "Berlin (Berlin, Germany)",
     link: "./images/berlin.png",
   },];
-const modal = document.querySelector('.modal_type_edit');
-
-const editButton = document.querySelector('.profile__edit');
-const closeButton = modal.querySelector('.modal__closeButton');
+const profileModal = document.querySelector('.modal_type_edit');
+const profileEditButton = document.querySelector('.profile__edit');
+const profileCloseButton = profileModal.querySelector('.modal__closeButton');
 const profileForm = document.querySelector('.modal__form');
 const profileName = document.querySelector('.profile__name');
 const profileNameNew = document.querySelector('.input-name');
@@ -39,12 +38,12 @@ const cardsContainer = document.querySelector('.content__card-list');
 
 const previewModal = document.querySelector('.modal_type_preview');
 const previewCloseButton = previewModal.querySelector('.close-preview');
+const previewImage = document.querySelector('.modal__preview-image');
 
-function renderCard(cardData) {
+function createCard(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.content__image');
   const cardName = cardElement.querySelector('.content__name');
-  
   const heartButton = cardElement.querySelector('.content__heart-button');
   const deleteButton = cardElement.querySelector('.content__delete-button');
   
@@ -54,48 +53,53 @@ function renderCard(cardData) {
 
   heartButton.addEventListener('click', () => {
     heartButton.classList.toggle('heart-on');
-    console.log("HEART");
   });
   deleteButton.addEventListener('click', () => {
     const parent = deleteButton.closest("#card")
     parent.remove()
   });
   cardImage.addEventListener('click', () => {
-    const previewImage = document.querySelector('.modal__preview-image');
     previewImage.src= cardData.link;
-    previewModal.style = "overflow: visible;";
     const previewText = document.querySelector('.modal__preview-text');
     previewText.textContent = cardData.name;
     openModal(previewModal);
   }); 
+  return cardElement;
+};
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
   cardsContainer.prepend(cardElement);
-}
+};
 function openModal(elem) {
   elem.classList.add('modal_opened');
-  elem.style = "animation: fadeIn 0.7s;"
 };
 function closeModal(elem) {
-  elem.style = "animation: fadeOut 0.7s;"
-  setTimeout(() => {  elem.classList.remove('modal_opened'); }, 600);
+  setTimeout(() => {
+    elem.classList.remove('modal_opened'); 
+  }, 600);
 };
 function submitEdits(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameNew.value;
   profileTitle.textContent = profileTitleNew.value;
-  closeModal(modal);
-}
+  closeModal(profileModal);
+};
 function submitCreate(evt) {
   evt.preventDefault();
   closeModal(addModal);
-}
-
-editButton.addEventListener('click', () => {
+};
+function fillProfileForm() {
   profileNameNew.value = profileName.textContent;
   profileTitleNew.value = profileTitle.textContent;
-  openModal(modal);
+};
+
+profileEditButton.addEventListener('click', () => {
+  fillProfileForm();
+  openModal(profileModal);
 }); 
 addButton.addEventListener('click', () => {openModal(addModal);}); 
-closeButton.addEventListener('click', () => {closeModal(modal);});
+profileCloseButton.addEventListener('click', () => {closeModal(profileModal);});
 addCloseButton.addEventListener('click', () => {closeModal(addModal);});
 previewCloseButton.addEventListener('click', () => {closeModal(previewModal);});
 profileForm.addEventListener('submit', submitEdits);
@@ -105,8 +109,7 @@ addForm.addEventListener('submit', (e) => {
   const link = e.target.link.value;
   renderCard({name: title,link: link});
   closeModal(addModal);
+  addForm.reset()
 });
 
-initialCards.forEach(function (cardData) {
-  renderCard(cardData);
-});
+initialCards.forEach(renderCard);

@@ -7,11 +7,17 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 2;
   color: black;
-  display: none;
-  
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 .modal_opened {
 	display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -46,7 +52,6 @@
   max-width: 75vw;
   max-height: 75vh;
 }
-
 .modal__preview-text {
   color: #fff;
   margin: 0;
@@ -116,6 +121,9 @@
 .modal__submission:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+.modal_type_preview.modal_opened {
+  overflow: visible;
 }
 
 @media screen and (max-width: 530px) {
