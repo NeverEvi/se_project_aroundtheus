@@ -57,10 +57,18 @@
 				<div class="modal__container">
 					<button type="button" class="modal__closeButton"></button>
 					<h2 class="modal__header">Edit Profile</h2>
-					<form class="modal__form">
-						<input class="modal__input input-name" type="text" name="name" placeholder="Name" required>
-						<input class="modal__input input-title" type="text" name="title" placeholder="Information" required>
-						<button class="modal__submission" type="submit" name="save">Save</button>
+					<form class="form edit-form" novalidate>
+						<label class="form__group">
+							<input class="form__input input-name" id="name" type="text" name="name" placeholder="Name" required minlength="2" maxlength="40">
+							<span class="form__input-error name-error first-error"></span>
+						</label>
+						<label class="form__group">
+							<input class="form__input input-title form__input-last" id="title" type="text" name="title" placeholder="Information" required minlength="2" maxlength="200">
+							<span class="form__input-error title-error second-error"></span>
+						</label>
+						<label class="form__group">
+							<button class="form__submission" type="submit" name="save">Save</button>
+						</label>
 					</form>
 				</div>
 			</div>
@@ -68,10 +76,18 @@
 				<div class="modal__container">
 					<button type="button" class="modal__closeButton close-edit"></button>
 					<h2 class="modal__header">New Place</h2>
-					<form class="modal__form add-form">
-						<input class="modal__input input-addTitle" type="text" name="title" placeholder="Title" required>
-						<input class="modal__input input-addLink" type="text" name="link" placeholder="Image link" required>
-						<button class="modal__submission" type="submit" name="create">Create</button>
+					<form class="form add-form" novalidate>
+						<label class="form__group">
+							<input class="form__input input-addTitle" id="cardName" type="text" name="title" placeholder="Title" required minlength="1" maxlength="30">
+							<span class="form__input-error cardName-error first-error"></span>
+						</label>
+						<label class="form__group">
+							<input class="form__input input-addLink form__input-last" id="cardUrl" type="url" name="link" placeholder="Image link" required>
+							<span class="form__input-error cardUrl-error second-error"></span>
+						</label>
+						<label class="form__group">
+							<button class="form__submission" type="submit" name="create">Create</button>
+						</label>
 					</form>
 				</div>
 			</div>
@@ -84,5 +100,6 @@
 			</div>
 		</div>
 		<script src="./scripts/index.js"></script>
+		<script src="./scripts/validation.js"></script>
 	</body>
 </html>

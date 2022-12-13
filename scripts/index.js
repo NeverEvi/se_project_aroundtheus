@@ -1,3 +1,12 @@
+const config = {
+  invalidInput: "form__input-invalid",
+  activateError: "form__input-error_active",
+  formTypeError: "form__input_type_error",
+  inactiveButton: "button_inactive",
+  modalInput: ".form__input",
+  modalButton: ".form__submission",
+  modalForm: ".form",
+};
 const initialCards = [{
     name: "Portland (Portland, Maine, USA)",
     link: "./images/portland.png",
@@ -20,7 +29,7 @@ const initialCards = [{
 const profileModal = document.querySelector('.modal_type_edit');
 const profileEditButton = document.querySelector('.profile__edit');
 const profileCloseButton = profileModal.querySelector('.modal__closeButton');
-const profileForm = document.querySelector('.modal__form');
+const profileForm = document.querySelector('.form');
 const profileName = document.querySelector('.profile__name');
 const profileNameNew = document.querySelector('.input-name');
 const profileTitle = document.querySelector('.profile__title');
@@ -39,6 +48,7 @@ const cardsContainer = document.querySelector('.content__card-list');
 const previewModal = document.querySelector('.modal_type_preview');
 const previewCloseButton = previewModal.querySelector('.close-preview');
 const previewImage = document.querySelector('.modal__preview-image');
+const previewText = document.querySelector('.modal__preview-text');
 
 function createCard(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -55,18 +65,16 @@ function createCard(cardData) {
     heartButton.classList.toggle('heart-on');
   });
   deleteButton.addEventListener('click', () => {
-    const parent = deleteButton.closest("#card")
-    parent.remove()
+    const parent = deleteButton.closest("#card");
+    parent.remove();
   });
   cardImage.addEventListener('click', () => {
     previewImage.src= cardData.link;
-    const previewText = document.querySelector('.modal__preview-text');
     previewText.textContent = cardData.name;
     openModal(previewModal);
   }); 
   return cardElement;
 };
-
 function renderCard(cardData) {
   const cardElement = createCard(cardData);
   cardsContainer.prepend(cardElement);
@@ -74,11 +82,12 @@ function renderCard(cardData) {
 function openModal(elem) {
   elem.classList.add('modal_opened');
 };
-function closeModal(elem) {
+function closeModal(elem) { 
   elem.classList.remove('modal_opened'); 
 };
 function submitEdits(evt) {
   evt.preventDefault();
+  
   profileName.textContent = profileNameNew.value;
   profileTitle.textContent = profileTitleNew.value;
   closeModal(profileModal);
@@ -86,14 +95,28 @@ function submitEdits(evt) {
 function submitCreate(evt) {
   evt.preventDefault();
   closeModal(addModal);
+
 };
 function fillProfileForm() {
   profileNameNew.value = profileName.textContent;
   profileTitleNew.value = profileTitle.textContent;
 };
 
+
+function closeAllModals() {
+  document.querySelectorAll('.modal').forEach(closeModal);
+};
+function keyHandler(evt) {
+  if(evt.key === "Escape") {
+    closeAllModals()
+  };
+};
+function clickOutHandler(evt) {
+  if(evt.currentTarget !== evt.target) return;
+  closeAllModals();
+};
 profileEditButton.addEventListener('click', () => {
-  fillProfileForm();
+  //fillProfileForm();
   openModal(profileModal);
 }); 
 addButton.addEventListener('click', () => {openModal(addModal);}); 
@@ -107,7 +130,16 @@ addForm.addEventListener('submit', (e) => {
   const link = e.target.link.value;
   renderCard({name: title,link: link});
   closeModal(addModal);
-  addForm.reset()
+  addForm.reset();
+  const buttonElement = addForm.querySelector(".form__submission");
+  buttonElement.classList.add(config.inactiveButton);
+  buttonElement.disabled = true;
+
 });
+profileModal.addEventListener('click', clickOutHandler);
+addModal.addEventListener('click', clickOutHandler);
+previewModal.addEventListener('click', clickOutHandler);
 
 initialCards.forEach(renderCard);
+document.addEventListener("keydown", keyHandler);
+
