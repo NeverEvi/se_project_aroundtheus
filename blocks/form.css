@@ -31,7 +31,7 @@
     transition: opacity 0.3s linear 0s;
     border-radius: 2px;
   }
-  .form__submission:hover {
+  .form__submission:hover:not(:disabled) {
     opacity: 0.8;
     cursor: pointer;
   }

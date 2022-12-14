@@ -81,9 +81,13 @@ function renderCard(cardData) {
 };
 function openModal(elem) {
   elem.classList.add('modal_opened');
+  elem.addEventListener('click', handleClickOut);
+  document.addEventListener("keydown", handleKeyDown);
 };
 function closeModal(elem) { 
-  elem.classList.remove('modal_opened'); 
+  elem.classList.remove('modal_opened');
+  elem.removeEventListener('click', handleClickOut);
+  document.removeEventListener("keydown", handleKeyDown);
 };
 function submitEdits(evt) {
   evt.preventDefault();
@@ -92,31 +96,39 @@ function submitEdits(evt) {
   profileTitle.textContent = profileTitleNew.value;
   closeModal(profileModal);
 };
-function submitCreate(evt) {
-  evt.preventDefault();
+function submitCreate(e) {
+  e.preventDefault();
+  const title = e.target.title.value;
+  const link = e.target.link.value;
+  renderCard({name: title,link: link});
   closeModal(addModal);
+  addForm.reset();
+  toggleButtonState(e)
+  //const buttonElement = addForm.querySelector(".form__submission");
+  //buttonElement.classList.add(config.inactiveButton);
+  //buttonElement.disabled = true;
 
-};
+}
 function fillProfileForm() {
   profileNameNew.value = profileName.textContent;
   profileTitleNew.value = profileTitle.textContent;
 };
 
-
-function closeAllModals() {
-  document.querySelectorAll('.modal').forEach(closeModal);
+function closeOpenedModal() {
+  const openedModal = document.querySelector('.modal_opened');
+  closeModal(openedModal);
 };
-function keyHandler(evt) {
+function handleKeyDown(evt) {
   if(evt.key === "Escape") {
-    closeAllModals()
+    closeOpenedModal()
   };
 };
-function clickOutHandler(evt) {
+function handleClickOut(evt) {
   if(evt.currentTarget !== evt.target) return;
-  closeAllModals();
+  closeModal(evt.currentTarget);
 };
 profileEditButton.addEventListener('click', () => {
-  //fillProfileForm();
+  fillProfileForm();
   openModal(profileModal);
 }); 
 addButton.addEventListener('click', () => {openModal(addModal);}); 
@@ -124,22 +136,8 @@ profileCloseButton.addEventListener('click', () => {closeModal(profileModal);});
 addCloseButton.addEventListener('click', () => {closeModal(addModal);});
 previewCloseButton.addEventListener('click', () => {closeModal(previewModal);});
 profileForm.addEventListener('submit', submitEdits);
-addForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const title = e.target.title.value;
-  const link = e.target.link.value;
-  renderCard({name: title,link: link});
-  closeModal(addModal);
-  addForm.reset();
-  const buttonElement = addForm.querySelector(".form__submission");
-  buttonElement.classList.add(config.inactiveButton);
-  buttonElement.disabled = true;
-
-});
-profileModal.addEventListener('click', clickOutHandler);
-addModal.addEventListener('click', clickOutHandler);
-previewModal.addEventListener('click', clickOutHandler);
+addForm.addEventListener('submit', submitCreate);
 
 initialCards.forEach(renderCard);
-document.addEventListener("keydown", keyHandler);
+
 
