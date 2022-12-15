@@ -103,10 +103,8 @@ function submitCreate(e) {
   renderCard({name: title,link: link});
   closeModal(addModal);
   addForm.reset();
-  toggleButtonState(e)
-  //const buttonElement = addForm.querySelector(".form__submission");
-  //buttonElement.classList.add(config.inactiveButton);
-  //buttonElement.disabled = true;
+  const cardFormSubmitButton = e.target.querySelector(".form__submission")
+  toggleButtonState([e.target.title, e.target.link], cardFormSubmitButton, config)
 
 }
 function fillProfileForm() {
