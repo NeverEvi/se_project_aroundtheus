@@ -2,11 +2,11 @@
 <html lang="en">
 	<head>
 		<title>Around The U.S.</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="Kane Cramer">
-		<link rel="stylesheet" href="./pages/index.css">
-		<link rel="icon" href="favicon.ico">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="Kane Cramer" />
+		<link rel="stylesheet" href="./pages/index.css" />
+		<link rel="icon" href="favicon.ico" />
 	</head>
 	<body class="page">
 		<div class="page__content">
@@ -15,7 +15,7 @@
 					class="header__logo"
 					src="./images/Header.svg"
 					alt="Around the U.S."
-				>
+				/>
 			</header>
 			<main class="main">
 				<section class="profile page__section">
@@ -23,7 +23,7 @@
 						class="profile__avatar"
 						src="./images/jacques-cousteau.jpg"
 						alt="jacques cousteau avatar"
-					>
+					/>
 					<div class="profile__info">
 						<h1 class="profile__name">Jacques Cousteau</h1>
 						<button type="button" class="profile__edit"></button>
@@ -36,16 +36,12 @@
 						<template id="card-template">
 							<li class="content__card" id="card">
 								<button type="button" class="content__delete-button"></button>
-								<img
-									class="content__image"
-									src=" "
-									alt=" "
-								>
+								<img class="content__image" src=" " alt=" " />
 								<div class="content__desc">
 									<h2 class="content__name"></h2>
 									<button type="button" class="content__heart-button"></button>
 								</div>
-              </li>
+							</li>
 						</template>
 					</ul>
 				</section>
@@ -59,15 +55,35 @@
 					<h2 class="modal__header">Edit Profile</h2>
 					<form class="form edit-form" novalidate>
 						<label class="form__group">
-							<input class="form__input input-name" id="name" type="text" name="name" placeholder="Name" required minlength="2" maxlength="40">
+							<input
+								class="form__input input-name"
+								id="name"
+								type="text"
+								name="name"
+								placeholder="Name"
+								required
+								minlength="2"
+								maxlength="40"
+							/>
 							<span class="form__input-error name-error first-error"></span>
 						</label>
 						<label class="form__group">
-							<input class="form__input input-title form__input-last" id="title" type="text" name="title" placeholder="Information" required minlength="2" maxlength="200">
+							<input
+								class="form__input input-title form__input-last"
+								id="title"
+								type="text"
+								name="title"
+								placeholder="Information"
+								required
+								minlength="2"
+								maxlength="200"
+							/>
 							<span class="form__input-error title-error second-error"></span>
 						</label>
 						<label class="form__group">
-							<button class="form__submission" type="submit" name="save">Save</button>
+							<button class="form__submission" type="submit" name="save">
+								Save
+							</button>
 						</label>
 					</form>
 				</div>
@@ -78,28 +94,52 @@
 					<h2 class="modal__header">New Place</h2>
 					<form class="form add-form" novalidate>
 						<label class="form__group">
-							<input class="form__input input-addTitle" id="cardName" type="text" name="title" placeholder="Title" required minlength="1" maxlength="30">
+							<input
+								class="form__input input-addTitle"
+								id="cardName"
+								type="text"
+								name="title"
+								placeholder="Title"
+								required
+								minlength="1"
+								maxlength="30"
+							/>
 							<span class="form__input-error cardName-error first-error"></span>
 						</label>
 						<label class="form__group">
-							<input class="form__input input-addLink form__input-last" id="cardUrl" type="url" name="link" placeholder="Image link" required>
+							<input
+								class="form__input input-addLink form__input-last"
+								id="cardUrl"
+								type="url"
+								name="link"
+								placeholder="Image link"
+								required
+							/>
 							<span class="form__input-error cardUrl-error second-error"></span>
 						</label>
 						<label class="form__group">
-							<button class="form__submission" type="submit" name="create">Create</button>
+							<button class="form__submission" type="submit" name="create">
+								Create
+							</button>
 						</label>
 					</form>
 				</div>
 			</div>
 			<div class="modal modal_type_preview">
 				<div class="modal__preview-container">
-					<button type="button" class="modal__closeButton close-preview" id="closePreviewButton"></button>
-					<img class="modal__preview-image">
+					<button
+						type="button"
+						class="modal__closeButton close-preview"
+						id="closePreviewButton"
+					></button>
+					<img class="modal__preview-image" />
 					<p class="modal__preview-text"></p>
 				</div>
 			</div>
 		</div>
-		<script src="./scripts/index.js"></script>
-		<script src="./scripts/validation.js"></script>
+		<script type="module" src="./scripts/index.js"></script>
+		<script type="module" src="./scripts/FormValidator.js"></script>
+		<script type="module" src="./scripts/Card.js"></script>
+		<script type="module" src="./scripts/utils.js"></script>
 	</body>
 </html>
