@@ -29,6 +29,8 @@ const initialCards = [
 	},
 ];
 
+export const previewModal = document.querySelector(".modal_type_preview");
+const previewCloseButton = previewModal.querySelector(".close-preview");
 const cardsContainer = document.querySelector(".content__card-list");
 const cardTemplate = document.querySelector("#card-template").content;
 
@@ -91,6 +93,7 @@ const submitCreate = (event) => {
 		cardTemplate;
 	closeModal(addModal);
 	addForm.reset();
+	addFormValidator.toggleButtonState();
 };
 
 function fillProfileForm() {
@@ -110,6 +113,9 @@ profileCloseButton.addEventListener("click", () => {
 });
 addCloseButton.addEventListener("click", () => {
 	closeModal(addModal);
+});
+previewCloseButton.addEventListener("click", () => {
+	closeModal(previewModal);
 });
 
 profileForm.addEventListener("submit", submitEdits);

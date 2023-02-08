@@ -1,16 +1,10 @@
-import {
-	closeModal,
-	openModal,
-	handleEscUp,
-	handleClickOut,
-	isEscEvent,
-} from "./utils.js";
+import { openModal } from "./utils.js";
+import { previewModal } from "./index.js";
 
 //modal for card previews
-const previewModal = document.querySelector(".modal_type_preview");
-const previewCloseButton = previewModal.querySelector(".close-preview");
-var previewImage = document.querySelector(".modal__preview-image");
-var previewText = document.querySelector(".modal__preview-text");
+
+let previewImage = document.querySelector(".modal__preview-image");
+let previewText = document.querySelector(".modal__preview-text");
 
 class Card {
 	constructor(data, selector) {
@@ -35,13 +29,17 @@ class Card {
 	_handleHeartButton() {
 		this.heartButton.classList.toggle("heart-on");
 	}
-	_handleDeleteButton() {
-		const parent = this.deleteButton.closest("#card");
-		parent.remove();
-	}
+	_handleDeleteButton = () => {
+		//const parent = this.deleteButton.closest("#card");
+		//parent.remove();
+
+		console.log(this._element);
+		this._element.remove();
+	};
 	_handleCardImage() {
 		previewImage.src = this._link;
 		previewText.textContent = this._name;
+		previewImage.alt = `Picture of ${this._name}`;
 		openModal(previewModal);
 	}
 
@@ -56,6 +54,9 @@ class Card {
 		this._element = this._getTemplate();
 
 		this._element.querySelector(".content__image").src = this._link;
+		this._element.querySelector(
+			".content__image"
+		).alt = `Picture of ${this._name}`;
 		this._element.querySelector(".content__name").textContent = this._name;
 
 		this._setEventListeners();
@@ -63,7 +64,5 @@ class Card {
 		return this._element;
 	}
 }
-previewCloseButton.addEventListener("click", () => {
-	closeModal(previewModal);
-});
+
 export default Card;

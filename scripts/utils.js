@@ -1,10 +1,11 @@
 const openModal = (target) => {
 	target.classList.add("modal_opened");
-	target.addEventListener("click", handleClickOut);
+	target.addEventListener("mousedown", handleClickOut);
 	document.addEventListener("keyup", handleEscUp);
 };
 const closeModal = (target) => {
 	target.classList.remove("modal_opened");
+	target.removeEventListener("mousedown", handleClickOut);
 	document.removeEventListener("keyup", handleEscUp);
 };
 
@@ -17,8 +18,8 @@ const handleClickOut = (event) => {
 	closeModal(event.currentTarget);
 };
 const isEscEvent = (event, action) => {
-	const activeModal = document.querySelector(".modal_opened");
 	if (event.key === "Escape") {
+		const activeModal = document.querySelector(".modal_opened");
 		action(activeModal);
 	}
 };
