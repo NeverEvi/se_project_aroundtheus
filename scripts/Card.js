@@ -3,8 +3,8 @@ import { previewModal } from "./index.js";
 
 //modal for card previews
 
-let previewImage = document.querySelector(".modal__preview-image");
-let previewText = document.querySelector(".modal__preview-text");
+const previewImage = document.querySelector(".modal__preview-image");
+const previewText = document.querySelector(".modal__preview-text");
 
 class Card {
 	constructor(data, selector) {
@@ -49,11 +49,9 @@ class Card {
 
 	initCard() {
 		this._element = this._getTemplate();
-
-		this._element.querySelector(".content__image").src = this._link;
-		this._element.querySelector(
-			".content__image"
-		).alt = `Picture of ${this._name}`;
+		this._cardImage = this._element.querySelector(".content__image");
+		this._cardImage.src = this._link;
+		this._cardImage.alt = `Picture of ${this._name}`;
 		this._element.querySelector(".content__name").textContent = this._name;
 
 		this._setEventListeners();
