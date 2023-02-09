@@ -30,10 +30,6 @@ class Card {
 		this.heartButton.classList.toggle("heart-on");
 	}
 	_handleDeleteButton = () => {
-		//const parent = this.deleteButton.closest("#card");
-		//parent.remove();
-
-		console.log(this._element);
 		this._element.remove();
 	};
 	_handleCardImage() {
@@ -46,7 +42,8 @@ class Card {
 	_getTemplate() {
 		const cardElement = document
 			.querySelector("#card-template")
-			.content.cloneNode(true);
+			.content.querySelector("#card")
+			.cloneNode(true);
 		return cardElement;
 	}
 
