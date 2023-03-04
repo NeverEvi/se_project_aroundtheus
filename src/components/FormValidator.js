@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
 	constructor(settings, formElement) {
 		this._input = settings.modalInput;
 		this._submitButton = settings.modalButton;
@@ -44,7 +44,7 @@ class FormValidator {
 	_checkInputValidity(inputElement) {
 		if (!inputElement.validity.valid) {
 			this._showInputError(
-				this._form,
+				this._form, //remove
 				inputElement,
 				inputElement.validationMessage
 			);
@@ -71,5 +71,3 @@ class FormValidator {
 		this._setEventListeners();
 	}
 }
-
-export default FormValidator;

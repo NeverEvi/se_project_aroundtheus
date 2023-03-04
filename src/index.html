@@ -5,7 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="author" content="Kane Cramer" />
-		<link rel="stylesheet" href="./pages/index.css" />
+		<link rel="stylesheet" src="./pages/index.css" />
 		<link rel="icon" href="favicon.ico" />
 	</head>
 	<body class="page">
@@ -13,7 +13,7 @@
 			<header class="header page__section">
 				<img
 					class="header__logo"
-					src="./images/Header.svg"
+					src="<%=require('./images/Header.svg')%>"
 					alt="Around the U.S."
 				/>
 			</header>
@@ -21,7 +21,7 @@
 				<section class="profile page__section">
 					<img
 						class="profile__avatar"
-						src="./images/jacques-cousteau.jpg"
+						src="<%=require('./images/jacques-cousteau.jpg')%>"
 						alt="jacques cousteau avatar"
 					/>
 					<div class="profile__info">
@@ -137,9 +137,5 @@
 				</div>
 			</div>
 		</div>
-		<script type="module" src="./scripts/index.js"></script>
-		<script type="module" src="./scripts/FormValidator.js"></script>
-		<script type="module" src="./scripts/Card.js"></script>
-		<script type="module" src="./scripts/utils.js"></script>
 	</body>
 </html>

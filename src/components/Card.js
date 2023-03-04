@@ -1,10 +1,4 @@
-import { openModal } from "./utils.js";
-import { previewModal } from "./index.js";
-
-//modal for card previews
-
-const previewImage = document.querySelector(".modal__preview-image");
-const previewText = document.querySelector(".modal__preview-text");
+import { previewModal } from "../pages/index.js";
 
 class Card {
 	constructor(data, selector) {
@@ -13,7 +7,7 @@ class Card {
 		this._selector = selector;
 	}
 
-	_setEventListeners() {
+	_setEventListeners(data) {
 		this.heartButton = this._element.querySelector(".content__heart-button");
 		this.heartButton.addEventListener("click", () => this._handleHeartButton());
 
@@ -24,7 +18,7 @@ class Card {
 
 		this._element
 			.querySelector(".content__image")
-			.addEventListener("click", () => this._handleCardImage());
+			.addEventListener("click", () => previewModal.open({ data }));
 	}
 	_handleHeartButton() {
 		this.heartButton.classList.toggle("heart-on");
@@ -32,13 +26,6 @@ class Card {
 	_handleDeleteButton = () => {
 		this._element.remove();
 	};
-	_handleCardImage() {
-		previewImage.src = this._link;
-		previewText.textContent = this._name;
-		previewImage.alt = `Picture of ${this._name}`;
-		openModal(previewModal);
-	}
-
 	_getTemplate() {
 		const cardElement = document
 			.querySelector("#card-template")
@@ -54,7 +41,7 @@ class Card {
 		this._cardImage.alt = `Picture of ${this._name}`;
 		this._element.querySelector(".content__name").textContent = this._name;
 
-		this._setEventListeners();
+		this._setEventListeners({ name: this._name, link: this._link });
 
 		return this._element;
 	}
