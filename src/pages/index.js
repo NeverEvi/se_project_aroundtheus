@@ -13,20 +13,24 @@ import {
 	initialCards,
 	validationSettings,
 	cardElement,
-	cardListSelector,
 	previewModalSelector,
 	profileModal,
 	addModal,
 	profileName,
-	profileTitle,
-	addForm,
+	profileJob,
 	editFormElement,
 	addFormElement,
 	profileNameNew,
-	profileTitleNew,
+	profileJobNew,
 	profileEditButton,
 	addButton,
-} from "../components/constants.js";
+} from "../utils/constants.js";
+
+////////////////////////////////////
+///////  card preview popup  ///////
+////////////////////////////////////
+
+export const previewModal = new PopupWithImage(previewModalSelector);
 
 /////////////////////////////////
 ///////  rendering cards  ///////
@@ -35,19 +39,19 @@ import {
 const cardSection = new Section(
 	{
 		renderer: (data) => {
-			const card = new Card(data, cardElement);
+			console.log(data);
+			const card = new Card(
+				{ data, selector: cardElement, template: "#card-template" },
+				() => {
+					previewModal.open({ data });
+				}
+			);
 			cardSection.addItem(card.initCard());
 		},
 	},
-	cardListSelector
+	".content__card-list"
 );
 cardSection.renderItems(initialCards);
-
-////////////////////////////////////
-///////  card preview popup  ///////
-////////////////////////////////////
-
-export const previewModal = new PopupWithImage(previewModalSelector);
 
 ////////////////////////////////////
 ///////  add new card popup  ///////
@@ -55,16 +59,20 @@ export const previewModal = new PopupWithImage(previewModalSelector);
 
 const newCardPopup = new PopupWithForm(addModal, (event) => {
 	event.preventDefault();
-	const card = new Card(
+	console.log(newCardPopup._getInputValues());
+	const newData = newCardPopup._getInputValues();
+	const newCard = new Card(
 		{
-			name: event.target.title.value,
-			link: event.target.link.value,
+			data: newData,
+			selector: cardElement,
+			template: "#card-template",
 		},
-		cardElement
+		() => {
+			previewModal.open({ data: newData }); // {name: '', link: ''}
+		}
 	);
-	cardSection.addItem(card.initCard());
+	cardSection.addItem(newCard.initCard());
 	newCardPopup.close();
-	addForm.reset();
 	addFormValidator.toggleButtonState();
 });
 
@@ -87,11 +95,7 @@ addFormValidator.enableValidation();
 
 const profilePopup = new PopupWithForm(profileModal, (event) => {
 	event.preventDefault();
-	const newUserInfo = {
-		name: profileNameNew.value,
-		title: profileTitleNew.value,
-	};
-	userInfo.setUserInfo(newUserInfo);
+	userInfo.setUserInfo(profilePopup._getInputValues());
 	profilePopup.close();
 });
 
@@ -100,8 +104,11 @@ const profilePopup = new PopupWithForm(profileModal, (event) => {
 /////////////////////////////////////
 
 const userInfo = new UserInfo(
-	profileName.textContent,
-	profileTitle.textContent
+	{ userName: profileName.textContent, userJob: profileJob.textContent },
+	() => {
+		profileName.textContent = userInfo.getUserInfo().name;
+		profileJob.textContent = userInfo.getUserInfo().job;
+	}
 );
 
 ////////////////////////////////////////
@@ -109,8 +116,8 @@ const userInfo = new UserInfo(
 ////////////////////////////////////////
 
 profileEditButton.addEventListener("click", () => {
-	profileNameNew.value = profileName.textContent;
-	profileTitleNew.value = profileTitle.textContent;
+	profileNameNew.value = userInfo.getUserInfo().name;
+	profileJobNew.value = userInfo.getUserInfo().job;
 	profilePopup.open();
 });
 

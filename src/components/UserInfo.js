@@ -1,22 +1,18 @@
-import { profileName, profileTitle } from "./constants";
-
 export default class UserInfo {
-	constructor(userName, userTitle) {
+	constructor({ userName, userJob }, setHandler) {
 		this._userName = userName;
-		this._userTitle = userTitle;
+		this._userJob = userJob;
+		this._setHandler = setHandler;
 	}
-
 	getUserInfo() {
 		return {
 			name: this._userName,
-			title: this._userTitle,
+			job: this._userJob,
 		};
 	}
-
 	setUserInfo(value) {
 		this._userName = value.name;
-		profileName.textContent = value.name;
-		this._userTitle = value.title;
-		profileTitle.textContent = value.title;
+		this._userJob = value.job;
+		this._setHandler();
 	}
 }

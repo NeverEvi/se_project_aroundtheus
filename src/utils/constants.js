@@ -47,7 +47,6 @@ const cardElement = document
 	.content.querySelector("#card")
 	.cloneNode(true);
 
-const cardListSelector = ".content__card-list";
 const previewModalSelector = document.querySelector(".modal_type_preview");
 
 const profileModal = document.querySelector(".modal_type_edit");
@@ -56,13 +55,13 @@ const addModal = document.querySelector(".modal_type_add");
 const addForm = document.querySelector(".add-form");
 
 const profileName = document.querySelector(".profile__name");
-const profileTitle = document.querySelector(".profile__title");
+const profileJob = document.querySelector(".profile__title");
 
 const editFormElement = profileModal.querySelector(".form");
 const addFormElement = addModal.querySelector(".add-form");
 
 const profileNameNew = document.querySelector(".input-name");
-const profileTitleNew = document.querySelector(".input-title");
+const profileJobNew = document.querySelector(".input-title");
 
 const profileEditButton = document.querySelector(".profile__edit");
 const addButton = document.querySelector(".profile__add");
@@ -71,17 +70,16 @@ export {
 	validationSettings,
 	initialCards,
 	cardElement,
-	cardListSelector,
 	previewModalSelector,
 	profileModal,
 	addModal,
 	profileName,
-	profileTitle,
+	profileJob,
 	addForm,
 	editFormElement,
 	addFormElement,
 	profileNameNew,
-	profileTitleNew,
+	profileJobNew,
 	profileEditButton,
 	addButton,
 };

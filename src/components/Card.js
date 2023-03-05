@@ -1,13 +1,13 @@
-import { previewModal } from "../pages/index.js";
-
-class Card {
-	constructor(data, selector) {
+export default class Card {
+	constructor({ data, selector, template }, handleClick) {
 		this._name = data.name;
 		this._link = data.link;
 		this._selector = selector;
+		this._template = template;
+		this._handleClick = handleClick;
 	}
 
-	_setEventListeners(data) {
+	_setEventListeners({ data }) {
 		this.heartButton = this._element.querySelector(".content__heart-button");
 		this.heartButton.addEventListener("click", () => this._handleHeartButton());
 
@@ -18,7 +18,7 @@ class Card {
 
 		this._element
 			.querySelector(".content__image")
-			.addEventListener("click", () => previewModal.open({ data }));
+			.addEventListener("click", () => this._handleClick(data));
 	}
 	_handleHeartButton() {
 		this.heartButton.classList.toggle("heart-on");
@@ -27,11 +27,11 @@ class Card {
 		this._element.remove();
 	};
 	_getTemplate() {
-		const cardElement = document
-			.querySelector("#card-template")
+		const cardEl = document
+			.querySelector(this._template)
 			.content.querySelector("#card")
 			.cloneNode(true);
-		return cardElement;
+		return cardEl;
 	}
 
 	initCard() {
@@ -42,9 +42,6 @@ class Card {
 		this._element.querySelector(".content__name").textContent = this._name;
 
 		this._setEventListeners({ name: this._name, link: this._link });
-
 		return this._element;
 	}
 }
-
-export default Card;
