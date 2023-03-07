@@ -8,11 +8,13 @@ export default class Card {
 	}
 
 	_setEventListeners({ data }) {
-		this.heartButton = this._element.querySelector(".content__heart-button");
-		this.heartButton.addEventListener("click", () => this._handleHeartButton());
+		this._heartButton = this._element.querySelector(".content__heart-button");
+		this._heartButton.addEventListener("click", () =>
+			this._handleHeartButton()
+		);
 
-		this.deleteButton = this._element.querySelector(".content__delete-button");
-		this.deleteButton.addEventListener("click", () =>
+		this._deleteButton = this._element.querySelector(".content__delete-button");
+		this._deleteButton.addEventListener("click", () =>
 			this._handleDeleteButton()
 		);
 
@@ -21,10 +23,11 @@ export default class Card {
 			.addEventListener("click", () => this._handleClick(data));
 	}
 	_handleHeartButton() {
-		this.heartButton.classList.toggle("heart-on");
+		this._heartButton.classList.toggle("heart-on");
 	}
 	_handleDeleteButton = () => {
 		this._element.remove();
+		this._element = null;
 	};
 	_getTemplate() {
 		const cardEl = document
@@ -39,8 +42,8 @@ export default class Card {
 		this._cardImage = this._element.querySelector(".content__image");
 		this._cardImage.src = this._link;
 		this._cardImage.alt = `Picture of ${this._name}`;
-		this._element.querySelector(".content__name").textContent = this._name;
-
+		this._nameText = this._element.querySelector(".content__name");
+		this._nameText.textContent = this._name;
 		this._setEventListeners({ name: this._name, link: this._link });
 		return this._element;
 	}
