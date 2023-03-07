@@ -61,9 +61,8 @@ cardSection.renderItems(initialCards);
 ///////  add new card popup  ///////
 ////////////////////////////////////
 
-const newCardPopup = new PopupWithForm(addModal, (event) => {
-	const newData = newCardPopup._getInputValues();
-	const newCardElement = createCard(newData);
+const newCardPopup = new PopupWithForm(addModal, (values) => {
+	const newCardElement = createCard(values);
 	cardSection.addItem(newCardElement);
 	newCardPopup.close();
 	addFormValidator.toggleButtonState();
@@ -102,8 +101,9 @@ const userInfo = new UserInfo({ userName: profileName, userJob: profileJob });
 ////////////////////////////////////////
 
 const openProfileEditor = () => {
-	profileNameNew.value = userInfo.getUserInfo().name;
-	profileJobNew.value = userInfo.getUserInfo().job;
+	const { name, job } = userInfo.getUserInfo();
+	profileNameNew.value = name;
+	profileJobNew.value = job;
 	profilePopup.open();
 };
 
