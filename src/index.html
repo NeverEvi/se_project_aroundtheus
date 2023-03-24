@@ -19,13 +19,12 @@
 			<main class="main">
 				<section class="profile page__section">
 					<div class="profile__avatar-container">
-					<img
-						class="profile__avatar"
-						src="<%=require('./images/jacques-cousteau.jpg')%>"
-						alt="jacques cousteau avatar"
-
-					></img>
-					<button type="button" class="profile__avatar-edit"></button>
+						<img
+							class="profile__avatar"
+							src="<%=require('./images/jacques-cousteau.jpg')%>"
+							alt="jacques cousteau avatar"
+						/>
+						<button type="button" class="profile__avatar-edit"></button>
 					</div>
 					<div class="profile__info">
 						<h1 class="profile__name">Loading...</h1>
@@ -42,8 +41,11 @@
 								<img class="content__image" src=" " alt=" " />
 								<div class="content__desc">
 									<h2 class="content__name"></h2>
-										<div class="content__heart-container">
-										<button type="button" class="content__heart-button"></button>
+									<div class="content__heart-container">
+										<button
+											type="button"
+											class="content__heart-button"
+										></button>
 										<p class="content__likes"></p>
 									</div>
 								</div>
@@ -154,7 +156,7 @@
 						<label class="form__group">
 							<input
 								class="form__input input-photo form__input-last"
-								id="cardUrl"
+								id="photoUrl"
 								type="url"
 								name="link"
 								placeholder="Image link"
@@ -177,7 +179,11 @@
 					<h2 class="modal__header_delete">Are you sure?</h2>
 					<form class="form">
 						<label class="form__group">
-							<button class="form__submission form__submission-delete" type="submit" name="save">
+							<button
+								class="form__submission form__submission-delete"
+								type="submit"
+								name="save"
+							>
 								Yes
 							</button>
 						</label>

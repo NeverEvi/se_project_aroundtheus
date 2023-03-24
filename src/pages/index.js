@@ -88,7 +88,6 @@ const createCard = (data) => {
 				api
 					.removeCard(cardId)
 					.then(() => {
-						//console.log("OK");
 						deleteCardPopup.close();
 						card.deleteCard();
 					})
@@ -200,7 +199,6 @@ const openProfileEditor = () => {
 };
 const openProfilePhotoEditor = () => {
 	const { avatar } = userInfo.getUserInfo();
-	console.log(avatar);
 	profilePhotoNew.value = avatar.src;
 	profilePhotoPopup.open();
 };
