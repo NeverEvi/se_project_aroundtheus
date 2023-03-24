@@ -10,7 +10,7 @@ export default class Api {
 		}
 		return Promise.reject(`Error ${res.status}`);
 	}
-	getAPiInfo() {
+	getAppInfo() {
 		return Promise.all([this.getUserInfo(), this.getInitialCards()]);
 	}
 	////////////////////////

@@ -1,12 +1,14 @@
 import Popup from "./Popup.js"; //bring Popup parent class
 
-export default class PopupWithForm extends Popup {
+export default class PopupWithConfirmation extends Popup {
 	//create child class
-	constructor(selector, handleFormSubmit) {
+	constructor(selector) {
 		//give it an object with the Selector (to find it) and the function to handle
 		super(selector);
 		this._popupForm = this._popup.querySelector(".form"); //define the form itself
-		this._handleFormSubmit = handleFormSubmit; //define which method to use
+	}
+	setAction(callback) {
+		this._handleFormSubmit = callback;
 	}
 	setEventListeners() {
 		super.setEventListeners();
@@ -26,9 +28,5 @@ export default class PopupWithForm extends Popup {
 			inputValues[input.name] = input.value;
 		});
 		return inputValues; //give the list object
-	}
-	close() {
-		this._popupForm.reset();
-		super.close();
 	}
 }

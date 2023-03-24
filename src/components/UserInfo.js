@@ -8,14 +8,18 @@ export default class UserInfo {
 		return {
 			name: this._userName.textContent,
 			about: this._userAbout.textContent,
-			avatar: this._userAvatar,
 		};
 	}
 	setUserInfo(value) {
 		this._userName.textContent = value.name;
 		this._userAbout.textContent = value.about;
-		if (value.avatar) {
-			this._userAvatar.src = value.avatar;
-		}
+	}
+	getAvatar() {
+		return {
+			avatar: this._userAvatar,
+		};
+	}
+	setAvatar(link) {
+		this._userAvatar.src = link;
 	}
 }
