@@ -22,11 +22,9 @@ export default class Popup {
 		if (event.currentTarget !== event.target) return;
 		this.close();
 	};
-
 	handleButtonClose = () => {
 		this.close();
 	};
-
 	setEventListeners() {
 		this._closeButton.addEventListener("mousedown", this.handleButtonClose);
 		document.addEventListener("keyup", this._handleEscClose);
