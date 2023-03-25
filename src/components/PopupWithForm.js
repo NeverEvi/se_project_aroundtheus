@@ -6,7 +6,16 @@ export default class PopupWithForm extends Popup {
 		//give it an object with the Selector (to find it) and the function to handle
 		super(selector);
 		this._popupForm = this._popup.querySelector(".form"); //define the form itself
+		this._submitButton = this._popup.querySelector(".form__submission");
+		this._buttonText = this._submitButton.textContent;
+
 		this._handleFormSubmit = handleFormSubmit; //define which method to use
+	}
+	showLoading() {
+		this._submitButton.textContent = "Saving...";
+	}
+	hideLoading() {
+		this._submitButton.textContent = this._buttonText;
 	}
 	setEventListeners() {
 		super.setEventListeners();

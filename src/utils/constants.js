@@ -37,18 +37,6 @@ const profileEditButton = document.querySelector(".profile__edit");
 const profilePhotoEditButton = document.querySelector(".profile__avatar-edit");
 const addButton = document.querySelector(".profile__add");
 
-const profileEditSubmitButton = profileModal.querySelector(".form__submission");
-const profilePhotoEditSubmitButton =
-	profilePhotoModal.querySelector(".form__submission");
-const addNewCardSubmitButton = addModal.querySelector(".form__submission");
-const deleteCardSubmitButton = deletionModal.querySelector(".form__submission");
-
-const profileEditSubmitButtonText = profileEditSubmitButton.textContent;
-const profilePhotoEditSubmitButtonText =
-	profilePhotoEditSubmitButton.textContent;
-const addNewCardSubmitButtonText = addNewCardSubmitButton.textContent;
-const deleteCardSubmitButtonText = deleteCardSubmitButton.textContent;
-
 export {
 	validationSettings,
 	cardElement,
@@ -69,14 +57,4 @@ export {
 	addButton,
 	profilePhotoModal,
 	deletionModal,
-	////////////////////////
-	profileEditSubmitButton,
-	profilePhotoEditSubmitButton,
-	addNewCardSubmitButton,
-	deleteCardSubmitButton,
-	////////////////////////
-	profileEditSubmitButtonText,
-	profilePhotoEditSubmitButtonText,
-	addNewCardSubmitButtonText,
-	deleteCardSubmitButtonText,
 };

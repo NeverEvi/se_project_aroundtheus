@@ -30,16 +30,6 @@ import {
 	addButton,
 	profilePhotoModal,
 	deletionModal,
-	////////////////////////
-	profileEditSubmitButton,
-	profilePhotoEditSubmitButton,
-	addNewCardSubmitButton,
-	deleteCardSubmitButton,
-	////////////////////////
-	profileEditSubmitButtonText,
-	profilePhotoEditSubmitButtonText,
-	addNewCardSubmitButtonText,
-	deleteCardSubmitButtonText,
 } from "../utils/constants.js";
 ////////////////////////////////////
 ///////       API            ///////
@@ -108,16 +98,18 @@ const createCard = (data) => {
 		(cardId) => {
 			//delete
 			deleteCardPopup.setAction(() => {
-				deleteCardSubmitButton.textContent = "Saving...";
+				deleteCardPopup.showLoading();
 				api
 					.removeCard(cardId)
 					.then(() => {
 						deleteCardPopup.close();
 						card.deleteCard();
-						deleteCardSubmitButton.textContent = deleteCardSubmitButtonText;
 					})
 					.catch((err) => {
 						console.error(err);
+					})
+					.finally(() => {
+						deleteCardPopup.hideLoading();
 					});
 			});
 			deleteCardPopup.open();
@@ -139,17 +131,19 @@ const cardSection = new Section(
 );
 
 const newCardPopup = new PopupWithForm(addModal, (values) => {
-	addNewCardSubmitButton.textContent = "Saving...";
+	newCardPopup.showLoading();
 	api
 		.addNewCard(values.name, values.link)
 		.then((res) => {
 			const newCardElement = createCard(res);
 			cardSection.addItem(newCardElement);
 			newCardPopup.close();
-			addNewCardSubmitButton.textContent = addNewCardSubmitButtonText;
 		})
 		.catch((err) => {
 			console.error(err);
+		})
+		.finally(() => {
+			newCardPopup.hideLoading();
 		});
 });
 
@@ -172,31 +166,33 @@ addFormValidator.enableValidation();
 ///////////////////////////////////////
 
 const profilePopup = new PopupWithForm(profileModal, (values) => {
-	profileEditSubmitButton.textContent = "Saving...";
+	profilePopup.showLoading();
 	api
 		.updateProfileInfo(values.name, values.about)
 		.then(() => {
 			userInfo.setUserInfo(values);
 			profilePopup.close();
-			profileEditSubmitButton.textContent = profileEditSubmitButtonText;
 		})
 		.catch((err) => {
 			console.error(err);
+		})
+		.finally(() => {
+			profilePopup.hideLoading();
 		});
 });
 const profilePhotoPopup = new PopupWithForm(profilePhotoModal, (values) => {
-	console.log(values.link);
-	profilePhotoEditSubmitButton.textContent = "Saving...";
+	profilePhotoPopup.showLoading();
 	api
 		.updateProfilePhoto(values.link)
 		.then(() => {
 			userInfo.setAvatar(values.link);
 			profilePhotoPopup.close();
-			profilePhotoEditSubmitButton.textContent =
-				profilePhotoEditSubmitButtonText;
 		})
 		.catch((err) => {
 			console.error(err);
+		})
+		.finally(() => {
+			profilePhotoPopup.hideLoading();
 		});
 });
 /////////////////////////////////////
